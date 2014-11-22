@@ -1,7 +1,7 @@
 auto.arima <- function(x, d=NA, D=NA, max.p=5, max.q=5,
     max.P=2, max.Q=2, max.order=5, max.d=2, max.D=1, 
     start.p=2, start.q=2, start.P=1, start.Q=1,
-    stationary=FALSE, seasonal=TRUE, freq = NA, ic=c("aicc","aic","bic"),
+    stationary=FALSE, seasonal=TRUE, man.freq = NA, ic=c("aicc","aic","bic"),
     stepwise=TRUE, trace=FALSE,
     approximation=(length(x)>100 | frequency(x)>12), xreg=NULL,
     test=c("kpss","adf","pp"), seasonal.test=c("ocsb","ch"),
@@ -40,9 +40,9 @@ auto.arima <- function(x, d=NA, D=NA, max.p=5, max.q=5,
   # Only consider non-seasonal models
   if(seasonal)
   	if(is.na(freq)){ 
-  	    m <- freq 
+  	    m <- frequency(x) 
   	} else {
-  	    m <- frequency(x)
+  	    m <- man.freq
   	}
   else
     m <- 1
