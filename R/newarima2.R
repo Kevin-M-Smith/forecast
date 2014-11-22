@@ -39,7 +39,7 @@ auto.arima <- function(x, d=NA, D=NA, max.p=5, max.q=5,
 
   # Only consider non-seasonal models
   if(seasonal)
-  	if(is.na(freq)){ 
+  	if(is.na(man.freq)){ 
   	    m <- frequency(x) 
   	} else {
   	    m <- man.freq
